@@ -63,5 +63,12 @@ public void getId_individualsInstantiateWithAnID() {
     assertTrue(Individual.all().get(0).equals(mIndividual));
   }
 
+  @Test
+  public void save_assignsIdToObject() {
+    mIndividual.save();
+    Individual savedIndividual = Individual.all().get(0);
+    assertEquals(mIndividual.getId(), savedIndividual.getId());
+  }
+
 
 }

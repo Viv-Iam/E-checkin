@@ -28,6 +28,9 @@ public String getName() {
       public int getId() {
     return id;
   }
+  public int getGroupId() {
+       return groupId;
+     }
 
   public static Individual find(int id) {
 try(Connection con = DB.sql2o.open()) {
