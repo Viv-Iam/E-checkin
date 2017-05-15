@@ -79,4 +79,11 @@ public void getId_individualsInstantiateWithAnID() {
          Individual savedIndividual = Individual.find(myIndividual.getId());
          assertEquals(savedIndividual.getGroupId(), myGroup.getId());
        }
+
+       @Test
+public void update_updatesIndividualName_true() {
+ mIndividual.save();
+ mIndividual.update("Samuel");
+ assertEquals("Samuel", Individual.find(mIndividual.getId()).getName());
+}
 }
