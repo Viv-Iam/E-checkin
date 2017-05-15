@@ -50,10 +50,17 @@ public void getId_individualsInstantiateWithAnID() {
     secondIndividual.save();
     assertEquals(Individual.find(secondIndividual.getId()), secondIndividual);
   }
+
   @Test
   public void equals_returnsTrueIfNamesAretheSame() {
     Individual secondIndividual = new Individual("Vivian", 1);
     assertTrue(mIndividual.equals(secondIndividual));
+  }
+
+  @Test
+  public void save_returnsTrueIfNamesAretheSame() {
+    mIndividual.save();
+    assertTrue(Individual.all().get(0).equals(mIndividual));
   }
 
 
