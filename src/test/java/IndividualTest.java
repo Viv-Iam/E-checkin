@@ -10,7 +10,7 @@ public class IndividualTest {
   private Individual mIndividual;
   @Before
   public void instantiate() {
-    mIndividual = new Individual("Vivian, 1");
+    mIndividual = new Individual("Vivian", 1);
   }
 
   @Test
@@ -42,5 +42,13 @@ public void getId_individualsInstantiateWithAnID() {
   mIndividual.save();
   assertTrue(mIndividual.getId() > 0);
 }
+
+@Test
+  public void find_returnsTaskWithSameId_secondTask() {
+    mIndividual.save();
+    Individual secondIndividual = new Individual("Mike", 2);
+    secondIndividual.save();
+    assertEquals(Individual.find(secondIndividual.getId()), secondIndividual);
+  }
 
 }
