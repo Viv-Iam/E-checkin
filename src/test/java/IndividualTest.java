@@ -10,7 +10,7 @@ public class IndividualTest {
   private Individual mIndividual;
   @Before
   public void instantiate() {
-    mIndividual = new Individual("Vivian");
+    mIndividual = new Individual("Vivian, 1");
   }
 
   @Test
@@ -26,7 +26,7 @@ public class IndividualTest {
   @Test
      public void all_returnsAllInstancesOfIndividual_true() {
        firstIndividual.save();
-       Individual secondIndividual = new Individual("Vivian", 2);
+       Individual secondIndividual = new Individual("Mike", 2);
        secondIndividual.save();
        assertEquals(true, Individual.all().get(0).equals(firstIndividual));
        assertEquals(true, Individual.all().get(1).equals(secondIndividual));
