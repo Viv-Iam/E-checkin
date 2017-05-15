@@ -86,4 +86,12 @@ public void update_updatesIndividualName_true() {
  mIndividual.update("Samuel");
  assertEquals("Samuel", Individual.find(mIndividual.getId()).getName());
 }
+
+@Test
+public void delete_deletesIndividual_true() {
+  mIndividual.save();
+  int myIndividualId = myIndividual.getId();
+  myIndividual.delete();
+  assertEquals(null, Individual.find(myIndividualId));
+}
 }
