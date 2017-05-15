@@ -44,4 +44,13 @@ public void clear_emptiesAllGroupsFromList_0() {
        assertTrue(mGroup.getId() > 0);
   }
 
+  @Test
+public void find_returnsGroupWithSameId_secondGroup() {
+  Group firstGroup = new Group("MC1");
+     firstGroup.save();
+     Group secondGroup = new Group("Prep");
+     secondGroup.save();
+     assertEquals(Group.find(secondGroup.getId()), secondGroup);
+}
+
 }
