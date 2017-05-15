@@ -36,6 +36,15 @@ public static List<Group> all() {
              public int getId() {
                  return id;
                }
+               public static Group find(int id) {
+                 try(Connection con = DB.sql2o.open()) {
+                         String sql = "SELECT * FROM groups where id=:id";
+                         Group group = con.createQuery(sql)
+                           .addParameter("id", id)
+                           .executeAndFetchFirst(Group.class);
+                         return group;
+                       }
+             }
 
 
 }
