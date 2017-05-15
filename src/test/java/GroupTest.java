@@ -76,4 +76,12 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
               assertTrue(Group.all().get(0).equals(mGroup));
             }
 
+            @Test
+    public void save_assignsIdToObject() {
+      mGroup.save();
+      Group savedGroup = Group.all().get(0);
+      assertEquals(mGroup.getId(), savedGroup.getId());
+    }
+
+
 }
