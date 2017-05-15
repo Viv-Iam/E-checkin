@@ -38,4 +38,16 @@ try(Connection con = DB.sql2o.open()) {
   return individual;
 }
 }
+
+@Override
+     public boolean equals(Object otherIndividual){
+       if (!(otherIndividual instanceof Individual)) {
+         return false;
+       } else {
+         Individual newIndividual = (Individual) otherIndividual;
+         return this.getName().equals(newIndividual.getName()) &&
+                this.getId() == newIndividual.getId() &&
+                this.getGroupId() == newIndividual.getGroupId();
+       }
+     }
 }
