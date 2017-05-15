@@ -37,4 +37,10 @@ public void clear_emptiesAllIndividualsFromArrayList_0() {
   assertEquals(Individual.all().size(), 0);
 }
 
+@Test
+public void getId_individualsInstantiateWithAnID() {
+  mIndividual.save();
+  assertTrue(mIndividual.getId() > 0);
+}
+
 }
