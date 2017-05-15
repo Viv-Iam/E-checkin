@@ -38,4 +38,10 @@ public void clear_emptiesAllGroupsFromList_0() {
   assertEquals(Group.all().size(), 0);
 }
 
+@Test
+  public void getId_groupsInstantiateWithAnId_1() {
+       mGroup.save();
+       assertTrue(mGroup.getId() > 0);
+  }
+
 }
