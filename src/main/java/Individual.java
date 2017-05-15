@@ -17,4 +17,11 @@ public Individual(String name, int groupId) {
 public String getName() {
     return name;
   }
+
+  public static List<Individual> all() {
+        String sql = "SELECT id, name, groupId FROM individuals";
+        try(Connection con = DB.sql2o.open()) {
+         return con.createQuery(sql).executeAndFetch(Individual.class);
+        }
+      }
 }
