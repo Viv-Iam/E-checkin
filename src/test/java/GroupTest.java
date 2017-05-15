@@ -19,8 +19,8 @@ public class GroupTest {
   }
 
   @Test
-  public void getName_categoryInstantiatesWithName_MC1() {
-    assertEquals("MC1", testCategory.getName());
+  public void getName_groupInstantiatesWithName_MC1() {
+    assertEquals("MC1", mGroup.getName());
   }
 
 }
