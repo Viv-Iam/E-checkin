@@ -50,4 +50,15 @@ try(Connection con = DB.sql2o.open()) {
                 this.getGroupId() == newIndividual.getGroupId();
        }
      }
+
+     public void save() {
+        try(Connection con = DB.sql2o.open()) {
+          String sql = "INSERT INTO individuals(name, groupId) VALUES (:name, :groupId)";
+          this.id = (int) con.createQuery(sql, true)
+            .addParameter("name", this.name)
+            .addParameter("groupId", this.groupId)
+            .executeUpdate()
+            .getKey();
+        }
+      }
 }
