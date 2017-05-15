@@ -53,4 +53,9 @@ public void find_returnsGroupWithSameId_secondGroup() {
      assertEquals(Group.find(secondGroup.getId()), secondGroup);
 }
 
+@Test
+public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
+  assertEquals(0, mCategory.getIndividuals().size());
+}
+
 }
