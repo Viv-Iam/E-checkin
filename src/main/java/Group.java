@@ -31,4 +31,9 @@ public static List<Group> all() {
                }
              }
 
+             public int getId() {
+                 return id;
+               }
+
+
 }
