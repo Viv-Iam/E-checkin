@@ -83,5 +83,16 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
       assertEquals(mGroup.getId(), savedGroup.getId());
     }
 
+    @Test
+      public void getIndividuals_retrievesALlIndividualsFromDatabase_individualList() {
+        mGroup.save();
+        Individual firstIndividual = new Individual("Mimi", mGroup.getId());
+        firstIndividual.save();
+        Individual secondIndividual = new Individual("Sisi", mGroup.getId());
+        secondIndividual.save();
+        Individual[] individuals = new Individual[] { firstIndividual, secondIndividual };
+        assertTrue(mGroup.getIndividuals().containsAll(Arrays.asList(individuals)));
+      }
+
 
 }
