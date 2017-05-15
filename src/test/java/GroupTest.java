@@ -70,4 +70,10 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
         assertTrue(firstGroup.equals(secondGroup));
       }
 
+      @Test
+            public void save_savesIntoDatabase_true() {
+              mGroup.save();
+              assertTrue(Group.all().get(0).equals(mGroup));
+            }
+
 }
