@@ -33,6 +33,9 @@ public class GroupTest {
           assertEquals(true, Group.all().get(1).equals(secondGroup));
   }
 
-  
+  @Test
+public void clear_emptiesAllGroupsFromList_0() {
+  assertEquals(Group.all().size(), 0);
+}
 
 }
