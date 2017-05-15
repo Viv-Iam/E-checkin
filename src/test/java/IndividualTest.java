@@ -25,11 +25,16 @@ public class IndividualTest {
 
   @Test
      public void all_returnsAllInstancesOfIndividual_true() {
-       firstIndividual.save();
+       mIndividual.save();
        Individual secondIndividual = new Individual("Mike", 2);
        secondIndividual.save();
-       assertEquals(true, Individual.all().get(0).equals(firstIndividual));
+       assertEquals(true, Individual.all().get(0).equals(mIndividual));
        assertEquals(true, Individual.all().get(1).equals(secondIndividual));
      }
+
+     @Test
+public void clear_emptiesAllIndividualsFromArrayList_0() {
+  assertEquals(Individual.all().size(), 0);
+}
 
 }

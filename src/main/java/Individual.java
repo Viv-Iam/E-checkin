@@ -8,7 +8,7 @@ private String name;
 private int id;
 private int groupId;
 
-public Individual(String name) {
+public Individual(String name, int groupId) {
     this.name = name;
     this.groupId = groupId;
 
