@@ -17,5 +17,10 @@ public class IndividualTest {
   public void Individual_instantiatesCorrectly_true() {
     assertEquals(true, mIndividual instanceof Individual);
   }
+  @Test
+  public void Individual_instantiatesWithName_String() {
+    assertEquals("Vivian", mIndividual.getName());
+  }
+
 
 }

@@ -10,3 +10,4 @@ public Individual(String name) {
     this.name = name;
 
 }
+}
