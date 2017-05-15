@@ -32,7 +32,7 @@ public String getName() {
   public static Individual find(int id) {
 try(Connection con = DB.sql2o.open()) {
   String sql = "SELECT * FROM individuals where id=:id";
-  Task task = con.createQuery(sql)
+  Individual individual = con.createQuery(sql)
     .addParameter("id", id)
     .executeAndFetchFirst(Individual.class);
   return individual;

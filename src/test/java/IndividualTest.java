@@ -44,13 +44,17 @@ public void getId_individualsInstantiateWithAnID() {
 }
 
 @Test
-  public void find_returnsIndividualWithSameId_secondTask() {
+  public void find_returnsIndividualWithSameId_secondIndividual() {
     mIndividual.save();
     Individual secondIndividual = new Individual("Mike", 2);
     secondIndividual.save();
     assertEquals(Individual.find(secondIndividual.getId()), secondIndividual);
   }
+  @Test
+  public void equals_returnsTrueIfNamesAretheSame() {
+    Individual secondIndividual = new Individual("Vivian", 1);
+    assertTrue(mIndividual.equals(secondIndividual));
+  }
 
-  
 
 }
