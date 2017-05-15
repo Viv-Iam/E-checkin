@@ -24,4 +24,8 @@ public String getName() {
          return con.createQuery(sql).executeAndFetch(Individual.class);
         }
       }
+
+      public int getId() {
+    return id;
+  }
 }
