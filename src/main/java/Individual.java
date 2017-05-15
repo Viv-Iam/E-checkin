@@ -67,7 +67,7 @@ try(Connection con = DB.sql2o.open()) {
 
       public void update(String name) {
   try(Connection con = DB.sql2o.open()) {
-    String sql = "UPDATE tasks SET name = :name WHERE id = :id";
+    String sql = "UPDATE individuals SET name = :name WHERE id = :id";
     con.createQuery(sql)
       .addParameter("name", name)
       .addParameter("id", id)

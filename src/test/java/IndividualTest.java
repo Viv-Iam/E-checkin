@@ -90,8 +90,8 @@ public void update_updatesIndividualName_true() {
 @Test
 public void delete_deletesIndividual_true() {
   mIndividual.save();
-  int myIndividualId = myIndividual.getId();
-  myIndividual.delete();
+  int myIndividualId = mIndividual.getId();
+  mIndividual.delete();
   assertEquals(null, Individual.find(myIndividualId));
 }
 }

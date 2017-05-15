@@ -66,7 +66,7 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
 @Test
       public void equals_returnsTrueIfNamesAretheSame() {
         Group firstGroup = new Group("MC1");
-        Group secondGroup = new Group("Prep");
+        Group secondGroup = new Group("MC1");
         assertTrue(firstGroup.equals(secondGroup));
       }
 
