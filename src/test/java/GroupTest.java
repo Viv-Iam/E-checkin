@@ -10,12 +10,17 @@ public class GroupTest {
   private Group mGroup;
   @Before
   public void instantiate() {
-    mGroup = new Group();
+    mGroup = new Group("MC1");
   }
 
   @Test
   public void group_instantiatesCorrectly_true() {
   assertEquals(true, mGroup instanceof Group);
+  }
+
+  @Test
+  public void getName_categoryInstantiatesWithName_MC1() {
+    assertEquals("MC1", testCategory.getName());
   }
 
 }
