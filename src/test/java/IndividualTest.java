@@ -70,5 +70,13 @@ public void getId_individualsInstantiateWithAnID() {
     assertEquals(mIndividual.getId(), savedIndividual.getId());
   }
 
-
+  @Test
+       public void save_savesGroupIdIntoDB_true() {
+         Group myGroup = new Group("MC1");
+         myGroup.save();
+         Individual myIndividual = new Individual("Vivian", myGroup.getId());
+         myIndividual.save();
+         Individual savedIndividual = Individual.find(myIndividual.getId());
+         assertEquals(savedIndividual.getGroupId(), myGroup.getId());
+       }
 }
