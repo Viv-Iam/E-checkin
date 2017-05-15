@@ -58,4 +58,16 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
   assertEquals(0, mGroup.getIndividuals().size());
 }
 
+// @Test
+//  public void find_returnsNullWhenNoIndividFound_null() {
+//    assertTrue(Category.find(999) == null);
+//  }
+
+@Test
+      public void equals_returnsTrueIfNamesAretheSame() {
+        Group firstGroup = new Group("MC1");
+        Group secondGroup = new Group("Prep");
+        assertTrue(firstGroup.equals(secondGroup));
+      }
+
 }
