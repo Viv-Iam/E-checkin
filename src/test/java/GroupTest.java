@@ -23,4 +23,16 @@ public class GroupTest {
     assertEquals("MC1", mGroup.getName());
   }
 
+  @Test
+  public void all_returnsAllInstancesOfGroup_true() {
+    Group firstGroup = new Group("MC1");
+          firstGroup.save();
+          Group secondGroup = new Group("Prep");
+          secondGroup.save();
+          assertEquals(true, Group.all().get(0).equals(firstGroup));
+          assertEquals(true, Group.all().get(1).equals(secondGroup));
+  }
+
+  
+
 }
