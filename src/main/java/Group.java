@@ -46,5 +46,15 @@ public static List<Group> all() {
                        }
              }
 
+             @Override
+               public boolean equals(Object otherGroup) {
+                 if (!(otherGroup instanceof Group)) {
+                      return false;
+                    } else {
+                      Group newGroup = (Group) otherGroup;
+                      return this.getName().equals(newGroup.getName()) &&
+                             this.getId() == newGroup.getId();
+                 }
+               }
 
 }
