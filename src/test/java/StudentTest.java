@@ -26,3 +26,16 @@ public class StudentTest {
 	public void Student_instantiatesWithName_String() {
 		assertEquals("brian", testStudent.getName());
 	}
+	@Test
+public void getId_sudentsInstantiateWithAnID_1() {
+  assertTrue(testStudent.getId() > 0);
+}
+
+@Test
+public void find_returnsStudentWithSameId_secondStudent() {
+	Student firstStudent= new Student("malvin", 1);
+	firstStudent.save();
+  Student anotherStudent = new Student("cliffgor", 2);
+	anotherStudent.save();
+  assertEquals(Student.find(anotherStudent.getId()), anotherStudent);
+}
