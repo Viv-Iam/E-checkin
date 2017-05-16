@@ -66,3 +66,16 @@ public void find_returnsStudentWithSameId_secondStudent() {
   public void getId_studentsInstantiateWithAnID() {
     assertTrue(testStudent.getId() > 0);
   }
+	//update  Students
+	@Test
+	public void update_updatesStudentName_true() {
+		testStudent.update("minneh");
+		assertEquals("minneh", Student.find(testStudent.getId()).getName());
+	}
+	@Test
+public void delete_deletesStudent_true() {
+	secondStudent.delete();
+  testStudent.delete();
+  assertEquals(0, Student.all().size());
+}
+}
