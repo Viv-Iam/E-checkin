@@ -46,3 +46,23 @@ public void find_returnsCategoryWithSameId_secondCategory() {
       assertEquals(true, Category.all().get(0).equals(testCategory));
       assertEquals(true, Category.all().get(1).equals(secondCategory));
     }
+    @Test
+      public void getId_categoriesInstantiateWithAnId_1() {
+        assertTrue(testCategory.getId() > 0);
+      }
+  		@Test
+  	public void update_updatesName_MC4() {
+  		testCategory.update("MC4");
+  		assertEquals("MC4", Category.find(testCategory.getId()).getName());
+  	}
+      // @Test
+      //   public void getStudent_retrievesALlStudentsFromDatabase_tasksList() {
+      //     Student firstStudent = new Student("Mow the lawn", myCategory.getId());
+      //     firstStudent.save();
+      //     Task secondStudent = new Student("Do the dishes", myCategory.getId());
+      //     secondStudent.save();
+      //     Student[] students = new Student[] { firstStudent, secondStudent };
+      //     assertTrue(myCategory.getStudents().containsAll(Arrays.asList(students)));
+      //   }
+
+  }
