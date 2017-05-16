@@ -65,5 +65,14 @@ public static List<Group> all() {
                              this.getId() == newGroup.getId();
                  }
                }
+               public void delete() {
+                 try(Connection con = DB.sql2o.open()) {
+                 String sql = "DELETE FROM groups WHERE id = :id;";
+                 con.createQuery(sql)
+                   .addParameter("id", this.id)
+                   .executeUpdate();
 
+               }
+
+}
 }

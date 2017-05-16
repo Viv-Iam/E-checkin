@@ -93,6 +93,17 @@ public void getIndividuals_initiallyReturnsEmptyList_ArrayList() {
         Individual[] individuals = new Individual[] { firstIndividual, secondIndividual };
         assertTrue(mGroup.getIndividuals().containsAll(Arrays.asList(individuals)));
       }
-
+// deleting a group from the database
+@Test
+public void delete_deletesGroupAndIndividuals_true() {
+   Individual mIndividual = new Individual("Vivian", 1);
+  mIndividual.save();
+  mGroup.save();
+  int mGroupId = mGroup.getId();
+  int mIndividualId = mIndividual.getId();
+  mGroup.getIndividuals();
+  mGroup.delete();
+  assertEquals(null, Group.find(mGroupId));
+}
 
 }

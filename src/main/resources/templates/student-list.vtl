@@ -1,0 +1,9 @@
+<h1>$group.getName() Students:</h1>
+
+<ul>
+  #foreach($individual in $group.getIndividuals())
+   <li>$individual.getName()</li>
+  #end
+</ul>
+
+<a href="/student-groups">All groups</a>
