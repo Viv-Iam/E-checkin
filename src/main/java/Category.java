@@ -49,7 +49,7 @@ public  class Category {
 				 return con.createQuery(sql).executeAndFetch(Category.class);
 			 }
 		 }
-		//  saves a categiry 
+		//  saves a categiry
 		 public void save() {
          try(Connection con = DB.sql2o.open()) {
            String sql = "INSERT INTO categories (name) VALUES (:name)";
@@ -59,3 +59,13 @@ public  class Category {
             .getKey();
          }
     }
+		//overriding equals
+		@Override
+		 public boolean equals(Object otherCategory) {
+			 if (!(otherCategory instanceof Category)) {
+				 return false;
+			 } else {
+				 Category newCategory = (Category) otherCategory;
+				 return this.getName().equals(newCategory.getName()) ;
+			 }
+}
