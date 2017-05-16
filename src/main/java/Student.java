@@ -21,3 +21,24 @@ public class Student {
           .getKey();
       }
 	}
+	public String getName() {
+	    return name;
+	  }
+
+	  public int getId() {
+	    return id;
+	  }
+
+		public int getCategoryId() {
+        return categoryId;
+      }
+
+		public static Student find(int id) {
+			  try(Connection con = DB.sql2o.open()) {
+			    String sql = "SELECT * FROM students where id=:id";
+			    Student student = con.createQuery(sql)
+			      .addParameter("id", id)
+			      .executeAndFetchFirst(Student.class);
+			    return student;
+			  }
+			}
