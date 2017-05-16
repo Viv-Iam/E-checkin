@@ -3,32 +3,37 @@ import java.util.ArrayList;
 import org.sql2o.*;
 import java.sql.Timestamp;
 
-public  class Category {
+public  class Sign {
 	private int id;
 	private Timestamp timein;
+	private int studentId;
 //contructor
-	public Category(int studentId) {
-		this.name = name;
+	public Sign(int studentId) {
 		this.studentId = studentId;
 
 
 		try(Connection con = DB.sql2o.open()) {
-			String sql = "INSERT INTO categories (timein, studentId) VALUES (now(), :studentId)";
+			String sql = "INSERT INTO signs (timein, studentId) VALUES (now(), :studentId)";
 			this.id = (int) con.createQuery(sql, true)
-			 .addParameter("name", this.studentId)
+			 .addParameter("studentId", this.studentId)
 			 .executeUpdate()
 			 .getKey();
 		}
 	}
 	//getter methods
 
-		public String getStudentId() {
-			 return name;
+		public int getStudentId() {
+			 return studentId;
 		 }
 
-		 public int getId() {
-			 return id;
+		 //returns the timein
+		 public Timestamp getTimein() {
+			 return timein;
 		 }
+		 //returns the id of that sign in
+		 public int getId(){
+	     return id;
+	   }
 		 // public List<Student> getStudent() {
  		// 	try(Connection con = DB.sql2o.open()) {
      //     String sql = "SELECT * FROM student where categoryId=:id";
@@ -42,6 +47,7 @@ public  class Category {
 			 return false;
 		 } else {
 			 Sign newSign = (Sign) otherSign;
-			 return this.getPersonId() == newSign.getStudentId();
+			 return this.getStudentId() == newSign.getStudentId();
 		 }
 	 }
+ }
