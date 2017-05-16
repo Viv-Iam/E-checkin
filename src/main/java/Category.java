@@ -5,7 +5,7 @@ import org.sql2o.*;
 public  class Category {
 	private String name;
 	private int id;
-
+//contructor
 	public Category(String name) {
 		this.name = name;
 
@@ -17,3 +17,12 @@ public  class Category {
 			 .getKey();
 		}
 	}
+	//getter methods
+
+		public String getName() {
+			 return name;
+		 }
+
+		 public int getId() {
+			 return id;
+		 }
