@@ -59,3 +59,32 @@ public class Student {
         .getKey();
     }
   }
+	@Override
+	public boolean equals(Object otherStudent) {
+		if (!(otherStudent instanceof Student)) {
+			return false;
+		} else {
+			Student newStudent = (Student) otherStudent;
+			return this.getName().equals(newStudent.getName())  && this.getCategoryId() == newStudent.getCategoryId();
+		}
+		}
+		public void update(String name) {
+	  try(Connection con = DB.sql2o.open()) {
+	    String sql = "UPDATE students SET name = :name WHERE id = :id";
+	    con.createQuery(sql)
+	      .addParameter("name", name)
+	      .addParameter("id", id)
+	      .executeUpdate();
+	  }
+	}
+	public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+  String sql = "DELETE FROM students WHERE id = :id;";
+  con.createQuery(sql)
+    .addParameter("id", id)
+    .executeUpdate();
+  }
+}
+
+
+}
