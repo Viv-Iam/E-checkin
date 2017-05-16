@@ -50,4 +50,22 @@ public  class Sign {
 			 return this.getStudentId() == newSign.getStudentId();
 		 }
 	 }
+	 // saves in the database
+	 public void save() {
+		 try(Connection con = DB.sql2o.open()) {
+ 			String sql = "INSERT INTO signs (timein, studentId) VALUES (now(), :studentId)";
+ 			this.id = (int) con.createQuery(sql, true)
+ 			 .addParameter("studentId", this.studentId)
+ 			 .executeUpdate()
+ 			 .getKey();
+ 		}
+	 }
+	 //retrieving all the sings from the database
+	 public static List<Sign> all() {
+		 String sql = "SELECT * FROM signs;";
+		 try(Connection con = DB.sql2o.open()) {
+			 return con.createQuery(sql)
+			 .executeAndFetch(Sign.class);
+		 }
+	 }
  }

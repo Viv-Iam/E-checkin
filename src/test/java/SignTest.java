@@ -32,4 +32,10 @@ public class SignTest {
 	public void getStudentId_returnsStudentId() {
 		assertEquals(1, testSign.getStudentId());
 	}
+	//save assigns an id
+	@Test
+  public void save_assignsIdToSign() {
+    Sign savedSign = Sign.all().get(0);
+    assertEquals(savedSign.getId(), testSign.getId());
+  }
 }
