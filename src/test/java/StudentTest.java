@@ -39,3 +39,19 @@ public void find_returnsStudentWithSameId_secondStudent() {
 	anotherStudent.save();
   assertEquals(Student.find(anotherStudent.getId()), anotherStudent);
 }
+
+@Test
+	public void equals_returnsTrueIfNamesAretheSame() {
+		Student firstStudent= new Student("clifgor", 1);
+		firstStudent.save();
+	  Student anotherStudent = new Student("clifgor", 1);
+		anotherStudent.save();
+		assertTrue(firstStudent.equals(anotherStudent));
+	}
+
+	@Test
+  public void all_returnsAllInstancesOfStudent_true() {
+
+    assertEquals(true, Student.all().get(0).equals(testStudent));
+    assertEquals(true, Student.all().get(1).equals(secondStudent));
+  }
