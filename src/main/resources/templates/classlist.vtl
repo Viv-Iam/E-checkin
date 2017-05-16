@@ -1,6 +1,10 @@
 <!-- Depending on which cohort option they select, load list of students -->
 <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
 <link rel="stylesheet" href="/cover.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript' src='/scripts.js'></script>
+
 <div class="main">
 ## #if ($students)
 <h1 style="padding-top:30px;">Moringa Core 2</h1>
@@ -17,17 +21,17 @@
     <tr>
       <td>1</td>
       <td>Maina Gichuki</td>
-      <td><button type="submit" name="button1" class="btn btn-danger">Check In</button></td>
+      <td><button type="submit" id="button1" class="btn btn-black"><span class="ui-button-text">Check In</span></button></td>
     </tr>
     <tr>
       <td>2</td>
       <td>Call Yourmom</td>
-      <td><button type="submit" name="button2" class="btn btn-danger">Check In</button></td>
+      <td><button type="submit" id="button2" class="btn btn-black"><span class="ui-button-text">Check In</span></button></td>
     </tr>
     <tr>
       <td>3</td>
       <td>Who's Yourdaddy</td>
-      <td><button type="submit" name="button3" class="btn btn-danger">Check In</button></td>
+      <td><button type="submit" id="button3" class="btn btn-black"><span class="ui-button-text">Check In</span></button></td>
     </tr>
 
 ##	#foreach ($student in $students)
@@ -43,5 +47,3 @@
 ## #end
 </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
