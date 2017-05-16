@@ -42,3 +42,20 @@ public  class Category {
            return category;
          }
  		}
+		//returns all the categories
+		public static List<Category> all() {
+			 String sql = "SELECT id, name FROM categories";
+			 try(Connection con = DB.sql2o.open()) {
+				 return con.createQuery(sql).executeAndFetch(Category.class);
+			 }
+		 }
+		//  saves a categiry 
+		 public void save() {
+         try(Connection con = DB.sql2o.open()) {
+           String sql = "INSERT INTO categories (name) VALUES (:name)";
+					 this.id = (int) con.createQuery(sql, true)
+            .addParameter("name", this.name)
+            .executeUpdate()
+            .getKey();
+         }
+    }
