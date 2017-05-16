@@ -42,3 +42,20 @@ public class Student {
 			    return student;
 			  }
 			}
+			public static List<Student> all() {
+    String sql = "SELECT id, name, categoryId FROM students";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Student.class);
+    }
+  }
+
+	public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO students(name, categoryId) VALUES (:name, :categoryId)";
+			this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+				.addParameter("categoryId", this.categoryId)
+        .executeUpdate()
+        .getKey();
+    }
+  }
