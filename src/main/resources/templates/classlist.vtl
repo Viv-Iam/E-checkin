@@ -1,23 +1,45 @@
 <!-- Depending on which cohort option they select, load list of students -->
-
-#if ($students)
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="/cover.css">
+<div class="main">
+## #if ($students)
+<h1 style="padding-top:30px;">Moringa Core 2</h1>
+<div class="myTable">
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Student Name</th>
 			<th>Student ID</th>
+			<th>Student Name</th>
 			<th>Check In</th>
 		</tr>
 	</thead>
 	<tbody>
-	#foreach ($student in $students)
-		<tr>
+    <tr>
+      <td>1</td>
+      <td>Maina Gichuki</td>
+      <td><button type="submit" name="button1" class="btn btn-danger">Check In</button></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Call Yourmom</td>
+      <td><button type="submit" name="button2" class="btn btn-danger">Check In</button></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Who's Yourdaddy</td>
+      <td><button type="submit" name="button3" class="btn btn-danger">Check In</button></td>
+    </tr>
+
+##	#foreach ($student in $students)
+		<!-- <tr>
 			<td>$student.getName()</td>
 			<td>$student.getId()</td>
-      <!-- Button needs to link to checkin function for specific student -->
+       <!-- Button needs to link to checkin function for specific student
 			<td><button type="submit" name="button">Check In</button></td>
-		</tr>
-	#end
+		</tr> -->
+##	#end
 	</tbody>
 </table>
-#end
+## #end
+</div>
+</div>
