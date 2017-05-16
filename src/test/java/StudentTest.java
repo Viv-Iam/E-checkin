@@ -55,3 +55,14 @@ public void find_returnsStudentWithSameId_secondStudent() {
     assertEquals(true, Student.all().get(0).equals(testStudent));
     assertEquals(true, Student.all().get(1).equals(secondStudent));
   }
+
+	@Test
+	public void save_assignsIdToObject() {
+	  Student savedStudent = Student.all().get(0);
+	  assertEquals(testStudent.getId(), savedStudent.getId());
+	}
+
+	@Test
+  public void getId_studentsInstantiateWithAnID() {
+    assertTrue(testStudent.getId() > 0);
+  }
