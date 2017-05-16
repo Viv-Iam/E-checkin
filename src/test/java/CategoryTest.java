@@ -19,3 +19,13 @@ public class CategoryTest {
   public void category_instantiatesCorrectly_true() {
     assertEquals(true, testCategory instanceof Category);
   }
+  //gets the saved name
+  @Test
+public void getName_categoryInstantiatesWithName_MC2() {
+ assertEquals("MC2", testCategory.getName());
+}
+//gets the id of a category 
+ @Test
+public void find_returnsCategoryWithSameId_secondCategory() {
+ assertEquals(Category.find(secondCategory.getId()), secondCategory);
+}

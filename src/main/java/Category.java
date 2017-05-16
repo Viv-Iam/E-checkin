@@ -26,3 +26,19 @@ public  class Category {
 		 public int getId() {
 			 return id;
 		 }
+		 // public List<Student> getStudent() {
+ 		// 	try(Connection con = DB.sql2o.open()) {
+     //     String sql = "SELECT * FROM student where categoryId=:id";
+     //     return con.createQuery(sql).addParameter("id", this.id).executeAndFetch(Student.class);
+     //     }
+ 		// }
+
+ 		 public static Category find(int id) {
+ 			 try(Connection con = DB.sql2o.open()) {
+           String sql = "SELECT * FROM categories where id=:id";
+           Category category = con.createQuery(sql)
+             .addParameter("id", id)
+             .executeAndFetchFirst(Category.class);
+           return category;
+         }
+ 		}
