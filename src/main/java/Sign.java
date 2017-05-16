@@ -68,4 +68,14 @@ public  class Sign {
 			 .executeAndFetch(Sign.class);
 		 }
 	 }
+	 //find a signin by id
+	 public static Sign find(int id) {
+		try(Connection con = DB.sql2o.open()) {
+			String sql = "SELECT * FROM signs where id=:id";
+			Sign signin = con.createQuery(sql)
+				.addParameter("id", id)
+				.executeAndFetchFirst(Sign.class);
+			return signin;
+		}
+	 }
  }
