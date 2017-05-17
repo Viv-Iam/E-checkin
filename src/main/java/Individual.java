@@ -41,7 +41,15 @@ try(Connection con = DB.sql2o.open()) {
   return individual;
 }
 }
-
+//retrieves all the signs by student id
+public List<Sign> getSigns() {
+ try(Connection con = DB.sql2o.open()) {
+    String sql = "SELECT * FROM signs where studentId=:id";
+    return con.createQuery(sql)
+    .addParameter("id", this.id)
+    .executeAndFetch(Sign.class);
+    }
+}
 @Override
      public boolean equals(Object otherIndividual){
        if (!(otherIndividual instanceof Individual)) {

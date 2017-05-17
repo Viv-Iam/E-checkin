@@ -1,0 +1,18 @@
+<h1>$group.getName() Students:</h1>
+
+<ul>
+
+  #foreach($sign in $signs)
+   <li>$studentId.getName()
+
+   </li>
+  #end
+  #foreach($student in $sign.getStudent())
+   <li>$individual.getName()
+
+   </li>
+  #end
+
+</ul>
+
+<a href="/student-groups">All groups</a>

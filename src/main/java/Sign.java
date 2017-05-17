@@ -37,7 +37,9 @@ public  class Sign {
 		 public List<Individual> getStudent() {
  			try(Connection con = DB.sql2o.open()) {
          String sql = "SELECT * FROM individuals where groupId=:id";
-         return con.createQuery(sql).addParameter("id", this.id).executeAndFetch(Individual.class);
+         return con.createQuery(sql)
+				 .addParameter("id", this.id)
+				 .executeAndFetch(Individual.class);
          }
  		}
 
