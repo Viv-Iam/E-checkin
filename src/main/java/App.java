@@ -20,7 +20,7 @@ public class App {
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
-    get("/", (request, response) -> {
+    get("/admin", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("groups", Group.all());
       model.put("template", "templates/admin.vtl");
@@ -75,7 +75,7 @@ post("/groups/:id/students/check-in", (request, response) -> {
   Sign sign = new Sign(individual.getId());
   model.put("individual", individual);
   // model.put("template", "templates/student-list.vtl");
-  response.redirect("/student.vtl");
+  response.redirect("/student-groups");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
