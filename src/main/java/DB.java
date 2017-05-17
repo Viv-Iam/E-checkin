@@ -25,6 +25,6 @@ public class DB {
 
             sql2o = new Sql2o("jdbc:postgresql://" + host + ":" + port + path, username, password);
         } catch (URISyntaxException e ) {
-        }
+    }
   }
 }
