@@ -21,7 +21,7 @@ public class App {
     String layout = "templates/layout.vtl";
 
     get("/admin", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
+      Map<String, Object> model = new HashMap<String, bject>();
       model.put("groups", Group.all());
       model.put("template", "templates/admin.vtl");
 
