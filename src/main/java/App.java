@@ -144,6 +144,15 @@ get("/groups/:group_id/individuals/:id", (request, response) -> {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/admin/class/register", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  // Individual individual = new Individual(:studentId);
+  model.put("signs", Sign.all());
+  // model.put("individual", individual);
+  model.put("template", "templates/sign-in-list.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
 
 
     post("/groups/:group_id/individuals/:id", (request, response) -> {

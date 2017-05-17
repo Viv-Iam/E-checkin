@@ -6,7 +6,6 @@
 <script type='text/javascript' src='/scripts.js'></script>
 
 <div class="main">
-## #if ($students)
 <h1 style="padding-top:45px;">$group.getName() Students:</h1>
 <div class="myTable">
 <table class="table table-striped">
@@ -18,14 +17,14 @@
 		</tr>
 	</thead>
 	<tbody>
-
-		  #foreach($individual in $group.getIndividuals())
-			<td>$individual.getId()</td>
-		   <td>$individual.getName()</td>
-			 <td>$individual.getTimein()</td>
-		  #end
+  #foreach($sign in $signs)
+	<tr>
+  	<td>$sign.getStudent().getId()</td>
+		<td>$sign.getStudent().getName()</td>
+		<td>$sign.getTimein()</td>
+	 </tr>
+  #end
 	</tbody>
 </table>
-## #end
 </div>
 </div>
