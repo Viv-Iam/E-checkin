@@ -1,0 +1,16 @@
+<h1>$individual.getName()</h1>
+<h2> Belongs to: $group.getName() list.</h2>
+
+<h2>Edit individual:</h2>
+
+<form action="/groups/$individual.getGroupId()/individuals/$individual.getId()" method="post">
+  <label for="name">Name</label>
+  <input id="name" name="name" type="text">
+  <button type="submit" class="btn btn-info">Update Individual</button>
+</form>
+
+<form action="/groups/$individual.getGroupId()/individuals/$individual.getId()/delete" method="post">
+  <button type="submit" class="btn btn-danger" id="delete-individual">Delete Individual</button>
+</form>
+
+<a href="/groups/$group.getId()">Return to $group.getName()</a>

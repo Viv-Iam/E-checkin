@@ -1,0 +1,30 @@
+<!-- Depending on which cohort option they select, load list of students -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="/cover.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript' src='/scripts.js'></script>
+
+<div class="main">
+<h1 style="padding-top:45px;">$group.getName() Students:</h1>
+<div class="myTable">
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Student ID</th>
+			<th>Student Name</th>
+			<th>Time In</th>
+		</tr>
+	</thead>
+	<tbody>
+  #foreach($sign in $signs)
+	<tr>
+  	<td>$sign.getStudent().getId()</td>
+		<td>$sign.getStudent().getName()</td>
+		<td>$sign.getTimein()</td>
+	 </tr>
+  #end
+	</tbody>
+</table>
+</div>
+</div>

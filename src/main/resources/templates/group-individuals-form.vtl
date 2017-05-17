@@ -1,0 +1,12 @@
+<h1>Add a individual to $group.getName()</h1>
+
+<form action="/individuals" method="post">
+  <input id="groupId" name="groupId" type="hidden" value="$group.getId()">
+
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" class="form-control">
+  </div>
+
+  <button type="submit" class="btn btn-success">Add Individual</button>
+</form>
