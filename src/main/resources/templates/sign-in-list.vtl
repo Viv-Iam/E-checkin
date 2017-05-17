@@ -1,16 +1,8 @@
-<h1>$group.getName() Students:</h1>
+
 
 <ul>
-
   #foreach($sign in $signs)
-   <li>$studentId.getName()
-
-   </li>
-  #end
-  #foreach($student in $sign.getStudent())
-   <li>$individual.getName()
-
-   </li>
+   <li>$sign.getTimein()  $sign.getStudent().getName()</li>
   #end
 
 </ul>

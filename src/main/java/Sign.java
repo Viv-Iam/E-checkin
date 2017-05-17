@@ -11,7 +11,6 @@ public  class Sign {
 	public Sign(int studentId) {
 		this.studentId = studentId;
 
-
 		try(Connection con = DB.sql2o.open()) {
 			String sql = "INSERT INTO signs (timein, studentId) VALUES (now(), :studentId)";
 			this.id = (int) con.createQuery(sql, true)
@@ -26,6 +25,10 @@ public  class Sign {
 			 return studentId;
 		 }
 
+		 public Individual getStudent() {
+			 return Individual.find(studentId);
+		 }
+
 		 //returns the timein
 		 public Timestamp getTimein() {
 			 return timein;
@@ -34,7 +37,7 @@ public  class Sign {
 		 public int getId(){
 	     return id;
 	   }
-		 public List<Individual> getStudent() {
+		 public List<Individual> getStudents() {
  			try(Connection con = DB.sql2o.open()) {
          String sql = "SELECT * FROM individuals where groupId=:id";
          return con.createQuery(sql)
