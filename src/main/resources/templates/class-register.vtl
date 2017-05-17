@@ -1,36 +1,31 @@
+<!-- Depending on which cohort option they select, load list of students -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+<link rel="stylesheet" href="/cover.css">
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type='text/javascript' src='/scripts.js'></script>
+
+<div class="main">
 ## #if ($students)
+<h1 style="padding-top:45px;">$group.getName() Students:</h1>
+<div class="myTable">
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Student ID</th>
 			<th>Student Name</th>
-			<th>Checkin Time</th>
+			<th>Time In</th>
 		</tr>
 	</thead>
 	<tbody>
-	## #foreach ($student in $students)
-	<tr>
-		<td>1</td>
-		<td>Njoroge Kamau</td>
-		<td>Time</td>
-	</tr>
-	<tr>
-		<td>2</td>
-		<td>Clifford Gor</td>
-		<td>Time</td>
-	</tr>
-	<tr>
-		<td>3</td>
-		<td>Jaden Lesuk</td>
-		<td>Time</td>
-	</tr>
-		<!-- <tr>
-			<td>$student.getName()</td>
-			<td>$student.getId()</td>
-			<td>$student.getCheckinTime()</td>
-		</tr> -->
-##	#end
+
+		  #foreach($individual in $group.getIndividuals())
+			<td>$individual.getId()</td>
+		   <td>$individual.getName()</td>
+			 <td>$individual.getTimein()</td>
+		  #end
 	</tbody>
 </table>
 ## #end
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</div>
+</div>

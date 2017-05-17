@@ -92,6 +92,14 @@ get("/groups/:id/students", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
+get("/groups/students/show/", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  Group group = Group.find(Integer.parseInt(request.queryParams("groupId")));
+  model.put("group", group);
+  model.put("template", "templates/student-list.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
 post("/groups/:id/students/check-in", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   Group group = Group.find(Integer.parseInt(request.params(":id")));
@@ -135,6 +143,8 @@ get("/groups/:group_id/individuals/:id", (request, response) -> {
       model.put("template", "templates/individual.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+
 
     post("/groups/:group_id/individuals/:id", (request, response) -> {
 Map<String, Object> model = new HashMap<String, Object>();

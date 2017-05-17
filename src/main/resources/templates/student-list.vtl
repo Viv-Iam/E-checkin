@@ -1,14 +1,47 @@
 <br><br><br>
 <h1>$group.getName() Students:</h1>
 
-<ul>
-  #foreach($individual in $group.getIndividuals())
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student's Name</th>
+      <th>Edit</th>
+      <th>Remove</th>
+    </tr>
+  </thead>
+  <tbody>
+    #foreach ($individual in $group.getIndividuals())
+      <tr>
+        <td>
+          <a href="/student/$student.getId()">$individual.getName()</a>
+        </td>
+        <td>
+          <form action="/groups/$individual.getGroupId()/individuals/$individual.getId()" method="post">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text">
+            <button type="submit" class="btn btn-info">Update Individual</button>
+          </form>
+        </td>
+        <td><form action="/groups/$individual.getGroupId()/individuals/$individual.getId()/delete" method="post">
+          <button type="submit" class="btn btn-danger" id="delete-individual">Delete Individual</button>
+        </form>
+        </td>
+      </tr>
+    #end
+  </tbody>
+</table>
+
+<a href="/add-student" class="btn btn-success">Go Back</a>
+
+
+<!-- <ul>
+##  #foreach($individual in $group.getIndividuals())
    <li>$individual.getName()
 <form action="/groups/$group.getId()/students" method="post">
   <option value="$individual.getId()" type="hidden"></option><button type="submit">Check-IN</button>
   </form>
    </li>
-  #end
+##  #end
 </ul>
 
-<a href="/student-groups">All groups</a>
+<a href="/student-groups">All groups</a> -->
