@@ -3,7 +3,7 @@ apply plugin: 'application'
 
 archivesBaseName = "e-checkin"
 version = '1.0'
-applicationName = "echeckin"
+applicationName = "app"
 mainClassName = "App"
 
 repositories {
