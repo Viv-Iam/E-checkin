@@ -7,13 +7,16 @@
 <div class="main-container">
   <h1>Moringa Sign-In</h1>
   <div id = "box">
-    <h2>Please select your cohort below:</h2>
+    <h2>Please select your Cohort below:</h2>
     <div class="dropdown">
       <button class="dropbtn">Select Cohort:</button>
       <div class="dropdown-content">
-        <a href="/classlist">Moringa Core II</a>
+        #foreach($group in $groups)
+          <a href="/groups/$group.getId()/students">$group.getName()</a>
+        #end
+        <!-- <a href="/classlist">Moringa Core II</a>
         <a href="/classlist">Moringa Prep Full-Time</a>
-        <a href="/classlist">Moringa Prep Part-Time</a>
+        <a href="/classlist">Moringa Prep Part-Time</a> -->
       </div>
     </div>
   </div>

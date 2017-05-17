@@ -7,7 +7,7 @@
 
 <div class="main">
 ## #if ($students)
-<h1 style="padding-top:45px;">Moringa Core 2</h1>
+<h1 style="padding-top:45px;">$group.getName() Students:</h1>
 <div class="myTable">
 <table class="table table-striped">
 	<thead>
@@ -18,38 +18,21 @@
 		</tr>
 	</thead>
 	<tbody>
-    <tr>
-      <td>1</td>
-      <td>Maina Gichuki</td>
-      <td><button type="submit" class="button btn btn-black"><span class="checkin">Check In</span>
-			<span class="checkedin">Checked In</span>
-			</button></td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Call Yourmom</td>
-      <td><button type="submit" class="button btn btn-black">
-				<span class="checkin">Check In</span>
-				<span class="checkedin">Checked In</span>
-			</button></td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Who's Yourdaddy</td>
-      <td><button type="submit" class="button btn btn-black">
-				<span class="checkin">Check In</span>
-				<span class="checkedin">Checked In</span>
-				</button></td>
-    </tr>
 
-##	#foreach ($student in $students)
-		<!-- <tr>
-			<td>$student.getName()</td>
-			<td>$student.getId()</td>
-       <!-- Button needs to link to checkin function for specific student
-			<td><button type="submit" name="button">Check In</button></td>
-		</tr> -->
-##	#end
+		  #foreach($individual in $group.getIndividuals())
+			<td>$individual.getId()</td>
+		   <td>$individual.getName()</td>
+			 <td>
+		<form action="/groups/$group.getId()/students" method="post">
+		  <option value="$individual.getId()" type="hidden">
+		  </option>
+		<button type="submit" class="button btn btn-black">
+			<span class="checkin">Check In</span>
+			<span class="checkedin">Checked In</span>
+		</button>
+		  </form>
+		   </td>
+		  #end
 	</tbody>
 </table>
 ## #end

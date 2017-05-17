@@ -1,5 +1,14 @@
 <link rel="stylesheet" href="/admin.css">
-
+#if($groups)
+  <p>Click on a Group to see its Individuals:</p>
+  <ul>
+    #foreach ($group in $groups)
+      <li><a href="/groups/$group.getId()">$group.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no groups yet!</p>
+#end
 <div class="main-container">
   <div id="box">
   <div class="lefty">

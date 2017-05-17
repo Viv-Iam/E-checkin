@@ -33,11 +33,11 @@ public static List<Group> all() {
                }
              }
 
-             public int getId() {
-                 return id;
-               }
+     public int getId() {
+         return id;
+       }
 
-               public List<Individual> getIndividuals() {
+  public List<Individual> getIndividuals() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM individuals where groupId=:id";
       return con.createQuery(sql)
@@ -45,34 +45,45 @@ public static List<Group> all() {
         .executeAndFetch(Individual.class);
           }
   }
-               public static Group find(int id) {
-                 try(Connection con = DB.sql2o.open()) {
-                         String sql = "SELECT * FROM groups where id=:id";
-                         Group group = con.createQuery(sql)
-                           .addParameter("id", id)
-                           .executeAndFetchFirst(Group.class);
-                         return group;
-                       }
+   public static Group find(int id) {
+     try(Connection con = DB.sql2o.open()) {
+             String sql = "SELECT * FROM groups where id=:id";
+             Group group = con.createQuery(sql)
+               .addParameter("id", id)
+               .executeAndFetchFirst(Group.class);
+             return group;
+           }
+ }
+
+     public static Group findStudents(int id) {
+       try(Connection con = DB.sql2o.open()) {
+               String sqlStudents = "SELECT * FROM groups, individuals WHERE groups.id=:id AND individuals.groupid=:id";
+               Group group = con.createQuery(sqlStudents)
+                 .addParameter("id", id)
+                 .executeAndFetchFirst(Group.class);
+               return group;
              }
+   }
 
-             @Override
-               public boolean equals(Object otherGroup) {
-                 if (!(otherGroup instanceof Group)) {
-                      return false;
-                    } else {
-                      Group newGroup = (Group) otherGroup;
-                      return this.getName().equals(newGroup.getName()) &&
-                             this.getId() == newGroup.getId();
-                 }
-               }
-               public void delete() {
-                 try(Connection con = DB.sql2o.open()) {
-                 String sql = "DELETE FROM groups WHERE id = :id;";
-                 con.createQuery(sql)
-                   .addParameter("id", this.id)
-                   .executeUpdate();
 
-               }
+     @Override
+       public boolean equals(Object otherGroup) {
+         if (!(otherGroup instanceof Group)) {
+              return false;
+            } else {
+              Group newGroup = (Group) otherGroup;
+              return this.getName().equals(newGroup.getName()) &&
+                     this.getId() == newGroup.getId();
+         }
+       }
+       public void delete() {
+         try(Connection con = DB.sql2o.open()) {
+         String sql = "DELETE FROM groups WHERE id = :id;";
+         con.createQuery(sql)
+           .addParameter("id", this.id)
+           .executeUpdate();
+
+       }
 
 }
 }

@@ -26,12 +26,20 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("groups", Group.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
     get("/classlist", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/classlist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/classlist/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Group group = Group.find(Integer.parseInt(request.params(":id")));
       model.put("template", "templates/classlist.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -80,7 +88,7 @@ get("/groups/:id/students", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   Group group = Group.find(Integer.parseInt(request.params(":id")));
   model.put("group", group);
-  model.put("template", "templates/student-list.vtl");
+  model.put("template", "templates/classlist.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
