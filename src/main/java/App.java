@@ -36,7 +36,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-}
     get("/admin", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("groups", Group.all());
@@ -151,5 +150,4 @@ post("/groups/:group_id/individuals/:id/delete", (request, response) -> {
 }, new VelocityTemplateEngine());
 
   }
->>>>>>> a187491e4d43a8db0e2f7d2de25ca1e4018fb3ee
 }
