@@ -1,0 +1,10 @@
+<h1>$group.getName() individual:</h1>
+
+<ul>
+  #foreach($individual in $group.getIndividuals())
+   <li><a href="/groups/$group.getId()/individuals/$individual.getId()">$individual.getName()</a></li>
+  #end
+</ul>
+
+<a href="/groups/$group.getId()/individuals/new">Add a new Individual</a>
+<a href="/">All groups</a>
