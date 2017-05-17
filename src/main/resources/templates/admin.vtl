@@ -1,36 +1,33 @@
-#if($groups)
-  <p>Click on a Group to see its Individuals:</p>
-  <ul>
-    #foreach ($group in $groups)
-      <li><a href="/groups/$group.getId()">$group.getName()</a></li>
-    #end
-  </ul>
-#else
-  <p>There are no groups yet!</p>
-#end
+<link rel="stylesheet" href="/admin.css">
 
-<h2>New Group:</h2>
+<div class="main-container">
+  <div class="lefty">
+  <h2 class="whitie">New Group:</h2>
 
-<form action="/groups" method="post">
-  <label for="name">Group name</label>
-  <input id="name" name="name" type="text">
-  <button type="submit" class="btn btn-success">Add Group</button>
-</form>
-
-<h2>New Individual:</h2>
-
-<form action="/individuals" method="post">
-<label for="groupId">Select a List</label>
-<select id='groupId' name='groupId' type='text'>
-#foreach($group in $groups)
-  <option value="$group.getId()">$group.getName()</option>
-#end
-</select>
-
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input id="name" name="name" type="text" class="form-control">
+  <form action="/groups" method="post">
+    <label for="name" class="whitie">Group name</label>
+    <input id="name" name="name" type="text" class="form-control"><br>
+    <button type="submit" class="btn btn-success">Add Group</button>
+  </form>
   </div>
 
-  <button type="submit" class="btn btn-success">Add Individual</button>
-</form>
+  <div class="righty">
+  <h2 class="whitie">New Individual:</h2>
+
+  <form action="/individuals" method="post">
+  <label for="groupId" class="whitie">Select a List</label>
+  <select id='groupId' name='groupId' type='text'>
+  #foreach($group in $groups)
+    <option value="$group.getId()">$group.getName()</option>
+  #end
+  </select>
+
+    <div class="form-group">
+      <label for="name" class="whitie">Name</label>
+      <input id="name" name="name" type="text" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-success">Add Individual</button>
+  </form>
+  </div>
+</div>
