@@ -28,11 +28,11 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/groups/new", (request, response) -> {
-  Map<String, Object> model = new HashMap<String, Object>();
-  model.put("template", "templates/group-form.vtl");
-  return new ModelAndView(model, layout);
-}, new VelocityTemplateEngine());
+//     get("/groups/new", (request, response) -> {
+//   Map<String, Object> model = new HashMap<String, Object>();
+//   model.put("template", "templates/group-form.vtl");
+//   return new ModelAndView(model, layout);
+// }, new VelocityTemplateEngine());
 
 post("/groups", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
@@ -65,6 +65,17 @@ get("/groups/:id/students", (request, response) -> {
   Group group = Group.find(Integer.parseInt(request.params(":id")));
   model.put("group", group);
   model.put("template", "templates/student-list.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
+post("/groups/:id/students/check-in", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  Group group = Group.find(Integer.parseInt(request.params(":id")));
+  Individual individual = Individual.find(Integer.parseInt(request.queryParams("studentId")));
+  Sign sign = new Sign(individual.getId());
+  model.put("individual", individual);
+  // model.put("template", "templates/student-list.vtl");
+  response.redirect("/student.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 

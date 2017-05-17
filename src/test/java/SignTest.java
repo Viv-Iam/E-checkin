@@ -53,16 +53,16 @@ public class SignTest {
 	 Sign fourthSign = new Sign(4);
 	 assertEquals(Sign.find(fourthSign.getId()), fourthSign);
  }
- //save method saves StudentId in the DB
- // @Test
- // public void save_savesStudentIdIntoDB_true() {
- // Student testStudent = new Student(1);
- //  testStudent.save();
- // Sign anotherSign = new Sign(testStudent.getId());
- // anotherSign.save();
- // Sign savedSign = Sign.find(anotherSign.getId());
- // assertEquals(savedSign.getStudentId(), testStudent.getId());
- // }
+ // save method saves StudentId in the DB
+ @Test
+ public void save_savesStudentIdIntoDB_true() {
+ Individual testIndividual = new Individual("Vivian", 1);
+  testIndividual.save();
+ Sign anotherSign = new Sign(testIndividual.getId());
+ anotherSign.save();
+ Sign savedSign = Sign.find(anotherSign.getId());
+ assertEquals(savedSign.getStudentId(), testIndividual.getId());
+ }
 
  //saving time when a student signs in
  @Test

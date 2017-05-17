@@ -34,12 +34,12 @@ public  class Sign {
 		 public int getId(){
 	     return id;
 	   }
-		 // public List<Student> getStudent() {
- 		// 	try(Connection con = DB.sql2o.open()) {
-     //     String sql = "SELECT * FROM student where categoryId=:id";
-     //     return con.createQuery(sql).addParameter("id", this.id).executeAndFetch(Student.class);
-     //     }
- 		// }
+		 public List<Individual> getStudent() {
+ 			try(Connection con = DB.sql2o.open()) {
+         String sql = "SELECT * FROM individuals where groupId=:id";
+         return con.createQuery(sql).addParameter("id", this.id).executeAndFetch(Individual.class);
+         }
+ 		}
 
 		@Override
 	 public boolean equals(Object otherSign){

@@ -2,7 +2,11 @@
 
 <ul>
   #foreach($individual in $group.getIndividuals())
-   <li>$individual.getName()</li>
+   <li>$individual.getName()
+<form action="/groups/$group.getId()/students" method="post">
+  <option value="$individual.getId()" type="hidden"></option><button type="submit">Check-IN</button>
+  </form>
+   </li>
   #end
 </ul>
 
