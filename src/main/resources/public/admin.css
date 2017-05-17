@@ -19,15 +19,24 @@ body{
 }
 .lefty{
   float: left;
-  margin: 150px;
-  margin-left: 190px;
+  /*margin: 150px;
+  margin-left: 190px;*/
 }
 
 .righty{
   float: right;
-  margin: 150px;
-  margin-right: 110px;
+  /*margin: 150px;
+  margin-right: 110px;*/
 }
 .whitie{
   color: white;
+}
+
+#box{
+  box-shadow: 2px 4px 10px 4px grey;
+  margin-left: 250px;
+  margin-top: 100px;
+  width: 60%;
+  height: 60%;
+  padding: 50px;
 }

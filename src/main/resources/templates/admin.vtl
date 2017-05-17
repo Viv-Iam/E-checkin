@@ -1,21 +1,22 @@
 <link rel="stylesheet" href="/admin.css">
 
 <div class="main-container">
+  <div id="box">
   <div class="lefty">
-  <h2 class="whitie">New Group:</h2>
+  <h2 class="whitie">New Cohort</h2>
 
   <form action="/groups" method="post">
-    <label for="name" class="whitie">Group name</label>
+    <label for="name" class="whitie">Cohort Name: </label>
     <input id="name" name="name" type="text" class="form-control"><br>
     <button type="submit" class="btn btn-success">Add Group</button>
   </form>
   </div>
 
   <div class="righty">
-  <h2 class="whitie">New Individual:</h2>
+  <h2 class="whitie">New Student</h2>
 
   <form action="/individuals" method="post">
-  <label for="groupId" class="whitie">Select a List</label>
+  <label for="groupId" class="whitie">Select a List: </label>
   <select id='groupId' name='groupId' type='text'>
   #foreach($group in $groups)
     <option value="$group.getId()">$group.getName()</option>
@@ -23,11 +24,12 @@
   </select>
 
     <div class="form-group">
-      <label for="name" class="whitie">Name</label>
+      <label for="name" class="whitie">Name: </label>
       <input id="name" name="name" type="text" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-success">Add Individual</button>
+    <button type="submit" class="btn btn-success">Add Student</button>
   </form>
+  </div>
   </div>
 </div>
