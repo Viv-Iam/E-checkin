@@ -97,7 +97,7 @@ post("/groups", (request, response) -> {
   Group newGroup = new Group(name);
   newGroup.save();
   // model.put("template", "templates/group-success.vtl");
-  response.redirect("/");
+  response.redirect("/admin");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
@@ -147,8 +147,9 @@ post("/students/check-in", (request, response) -> {
 get("/admin/class/register", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   Group group = Group.find(Integer.parseInt(request.queryParams("groupId")));
+  model.put("students", group.getIndividuals());
   model.put("group", group);
-  model.put("signs", Sign.all());
+  // model.put("signs", Sign.all());
   model.put("template", "templates/class-register.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
@@ -172,7 +173,7 @@ post("/individuals", (request, response) -> {
 
   model.put("group", group);
   // model.put("template", "templates/group-individuals-success.vtl");
-  response.redirect("/");
+  response.redirect("/admin");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
