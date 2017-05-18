@@ -207,7 +207,6 @@ post("/groups/:group_id/delete", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
-
 //all groups
 get("/groups", (request, response) -> {
   HashMap<String, Object> model = new HashMap<String, Object>();
