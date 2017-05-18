@@ -203,9 +203,11 @@ post("/groups/:group_id/delete", (request, response) -> {
   Group group = Group.find(Integer.parseInt(request.params("group_id")));
   group.delete();
   model.put("group", group);
-  model.put("template", "templates/groups.vtl");
+  model.put("template", "templates/admin.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
+
+
 //all groups
 get("/groups", (request, response) -> {
   HashMap<String, Object> model = new HashMap<String, Object>();
