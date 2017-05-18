@@ -1,46 +1,26 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @Dicksonmuli
- Sign out
- Watch 0
-  Star 0
- Fork 0 paulinembabu/African-Kitenge
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs
-Branch: master Find file Copy pathAfrican-Kitenge/src/main/java/User.java
-c88eace  14 days ago
- paulinembabu Kitenge Ful Application
-0 contributors
-RawBlameHistory
-121 lines (109 sloc)  3.27 KB
+
 import java.util.List;
 import java.util.ArrayList;
 import org.sql2o.*;
 
 public class User {
-  private String name;
-  private String email;
-  private String password;
+	private String name;
+	private String password;
   private String type;
   private int id;
 
-  public static final String [] USER_TYPE = new String[] {"admin", "customer"};
+  public static final String [] USER_TYPE = new String[] {"admin", "student"};
+	public static final String USER_NAME = "user";
+	public static final String USER_PASSWORD = "moringa";
 
-  public User(String name, String email, String password, String type) {
+  public User(String name, String password, String type) {
     this.name = name;
-    this.email = email;
     this.password = password;
     this.type = type;
   }
 
   public String getName(){
     return name;
-  }
-  public String getEmail(){
-    return email;
   }
   public String getPassword(){
     return password;
@@ -59,7 +39,6 @@ public class User {
     } else {
       User newUser = (User) otherUser;
       return this.getName().equals(newUser.getName()) &&
-             this.getEmail().equals(newUser.getEmail()) &&
              this.getPassword().equals(newUser.getPassword()) &&
              this.getType().equals(newUser.getType());
     }
@@ -73,10 +52,11 @@ public class User {
 
   public void save() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO users (name, email, password, type) VALUES (admin, :email, moringa, :type)";
+      String sql = "INSERT INTO users (name, password, type) VALUES (:name, :password, :type)";
       this.id = (int) con.createQuery(sql, true)
-          .addParameter("email", this.email)
           .addParameter("type", this.type)
+					.addParameter("name", this.name)
+					.addParameter("password", this.password)
           .executeUpdate()
           .getKey();
     }

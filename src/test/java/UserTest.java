@@ -3,27 +3,26 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 
 public class UserTest {
-  User testUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
+  User testUser = new User("user", "moringa", "admin");
 
   @Rule
   public DatabaseRule database = new DatabaseRule();
 
   @Test
   public void user_instantiatesCorrectly_true(){
-    User testUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
+    User testUser = new User("user", "moringa", "admin");
     assertEquals(true, testUser instanceof User);
   }
   @Test
   public void user_testForGetterMethods_3(){
-    assertThat(testUser.getName(), is(equalTo("James")));
-    assertThat(testUser.getEmail(), is(equalTo("james@gmail.com")));
-    assertThat(testUser.getPassword(), is(equalTo("kitenge_test")));
+    assertThat(testUser.getName(), is(equalTo("user")));
+    assertThat(testUser.getPassword(), is(equalTo("moringa")));
     assertThat(testUser.getType(), is(equalTo("admin")));
   }
   @Test
   public void equals_returnsTrueIfNameandPasswordAreSame_true(){
-      User testUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
-      User anotherUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
+      User testUser = new User("user", "moringa", "admin");
+      User anotherUser = new User( "user", "moringa", "admin");
       assertTrue(testUser.equals(anotherUser));
   }
   @Test
@@ -33,64 +32,29 @@ public class UserTest {
   }
   @Test
   public void save_assignsIdToUser() {
-    User testUser1 = new User("James", "james@gmail.com", "kitenge_test", "admin");
+    User testUser1 = new User("user", "moringa", "admin");
     testUser1.save();
     User savedUser = User.all().get(0);
     assertEquals(savedUser.getId(), testUser1.getId());
   }
   @Test
   public void all_returnsAllUsers_true(){
-    User testUser1 = new User("James", "james@gmail.com", "kitenge_test", "admin");
+    User testUser1 = new User("user", "moringa", "admin");
     testUser1.save();
-    User testUser2 = new User("Nombu", "nombu@gmail.com", "kitenge_test", "customer");
+    User testUser2 = new User("user", "customer", "admin");
     testUser2.save();
     assertEquals(true, User.all().get(0).equals(testUser1));
     assertEquals(true, User.all().get(1).equals(testUser2));
   }
   @Test
   public void find_returnsUserWithSameId_secondUser(){
-    User testUser1 = new User("James", "james@gmail.com", "kitenge_test", "admin");
+    User testUser1 = new User( "user", "moringa", "admin");
     testUser1.save();
-    User testUser2 = new User("Nombu", "nombu@gmail.com", "kitenge_test", "customer");
+    User testUser2 = new User( "user", "customer", "admin");
     testUser2.save();
     assertEquals(User.find(testUser2.getId()), testUser2);
   }
-  @Test
-  public void update_updateUserInformation_true() {
-    User testUser = new User("James", "james@gmail.com", "kitenge_test", "admin");
-    testUser.save();
-    testUser.update("Nombu Murage", "nombu@gmail.com", "kitenge");
-    assertEquals("Nombu Murage", User.find(testUser.getId()).getName());
-    assertEquals("nombu@gmail.com", User.find(testUser.getId()).getEmail());
-    assertEquals("kitenge", User.find(testUser.getId()).getPassword());
 
-  }
-
-  @Test
-  public void delete_deletesUserFromDB_true() {
-    testUser.save();
-    testUser.delete();
-    assertEquals(0, User.all().size());
-  }
-
-  @Test
-  public void getCart_CheckIfTIRetrievesAllItems_true() {
-    testUser.save();
-    Cart newCart= new Cart(testUser.getId(),1,1);
-    newCart.save();
-    assertEquals(testUser.getCart().contains(newCart), true);
-  }
-  @Test
-  public void getCartWithVitenges_CheckIfTIRetrievesAllItems_true() {
-    testUser.save();
-    Clothes newClothes = new Clothes("romper","short floral pants",10,"medium",3000,1,"http://dhbdbhbdhb.com");
-    newClothes.save();
-      Cart newCart= new Cart(testUser.getId(),1,newClothes.getId());
-        newCart.save();
-      Clothes newCloth=Clothes.find(newCart.getKitengeId());
-      assertEquals(newClothes.getName(),"romper");
-    assertEquals(testUser.getCart().contains(newCart), true);
-  }
 
 
 }

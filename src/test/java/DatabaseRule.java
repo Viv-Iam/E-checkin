@@ -5,7 +5,7 @@ public class DatabaseRule extends ExternalResource {
 
   @Override
   protected void before() {
-    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/e_checkin_test", null, null);
+    DB.sql2o = new Sql2o("jdbc:postgresql://localhost:5432/e_checkin_test", "dickson", "dickson");
   }
 
   @Override
@@ -14,9 +14,11 @@ public class DatabaseRule extends ExternalResource {
       String deleteIndividualsQuery = "DELETE FROM individuals *;";
       String deleteGroupsQuery = "DELETE FROM groups *;";
       String deleteSignsQuery = "DELETE FROM signs *;";
+      String deleteUsersQuery = "DELETE FROM users *;";
       con.createQuery(deleteIndividualsQuery).executeUpdate();
       con.createQuery(deleteGroupsQuery).executeUpdate();
       con.createQuery(deleteSignsQuery).executeUpdate();
+      con.createQuery(deleteUsersQuery).executeUpdate();
     }
   }
 
