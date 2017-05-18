@@ -133,14 +133,23 @@ get("/groups/students/show/", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
-post("/groups/:id/students/check-in", (request, response) -> {
+post("/students/check-in", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
-  Group group = Group.find(Integer.parseInt(request.params(":id")));
+  // Group group = Group.find(Integer.parseInt(request.params(":id")));
   Individual individual = Individual.find(Integer.parseInt(request.queryParams("studentId")));
   Sign sign = new Sign(individual.getId());
   model.put("individual", individual);
   // model.put("template", "templates/student-list.vtl");
-  response.redirect("/student-groups");
+  response.redirect("/");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
+get("/admin/class/register", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  Group group = Group.find(Integer.parseInt(request.queryParams("groupId")));
+  model.put("group", group);
+  model.put("signs", Sign.all());
+  model.put("template", "templates/class-register.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
@@ -194,8 +203,10 @@ Individual individual = Individual.find(Integer.parseInt(request.params("id")));
 String name = request.queryParams("name");
 Group group = Group.find(individual.getGroupId());
 individual.update(name);
-String url = String.format("/groups/%d/individuals/%d", group.getId(), individual.getId());
+// String url = String.format("/groups/%d/individuals/%d", group.getId(), individual.getId());
+String url = "/groups/students/show/?groupId=" + request.params("group_id");
 response.redirect(url);
+// model.put("template", "templates/student-list.vtl");
 return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
