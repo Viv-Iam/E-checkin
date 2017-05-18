@@ -111,6 +111,15 @@ post("/students/check-in", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
+get("/admin/class/register", (request, response) -> {
+  Map<String, Object> model = new HashMap<String, Object>();
+  Group group = Group.find(Integer.parseInt(request.queryParams("groupId")));
+  model.put("group", group);
+  model.put("signs", Sign.all());
+  model.put("template", "templates/class-register.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+
 get("groups/:id/individuals/new", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   Group group = Group.find(Integer.parseInt(request.params(":id")));

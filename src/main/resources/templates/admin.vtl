@@ -39,7 +39,8 @@
 
     <button type="submit" class="btn btn-success">Add Student</button>
   </form>
-  </div>
+</div>
+
   <div class="righty">
   <h2 class="whitie">View Students</h2>
 
@@ -51,6 +52,20 @@
     #end
   </select>
   <button type="submit" class="btn btn-success">View Students</button>
+  </form>
+  </div>
+
+  <div class="righty">
+  <h2 class="whitie">View Student Logs</h2>
+
+  <form action="/admin/class/register">
+  <label for="groupId" class="whitie">Select a List: </label>
+  <select id='groupId' name='groupId' type='text'>
+    #foreach($group in $groups)
+      <option value="$group.getId()"><a href="">$group.getName()</a></option>
+    #end
+  </select>
+  <button type="submit" class="btn btn-success">View Student Logs</button>
   </form>
   </div>
   </div>
