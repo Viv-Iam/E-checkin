@@ -100,14 +100,14 @@ get("/groups/students/show/", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
-post("/groups/:id/students/check-in", (request, response) -> {
+post("/students/check-in", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
-  Group group = Group.find(Integer.parseInt(request.params(":id")));
+  // Group group = Group.find(Integer.parseInt(request.params(":id")));
   Individual individual = Individual.find(Integer.parseInt(request.queryParams("studentId")));
   Sign sign = new Sign(individual.getId());
   model.put("individual", individual);
   // model.put("template", "templates/student-list.vtl");
-  response.redirect("/student-groups");
+  response.redirect("/");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
