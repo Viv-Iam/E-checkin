@@ -6,6 +6,7 @@ import java.util.HashMap;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+import javax.swing.JOptionPane;
 
 public class App {
   public static void main(String[] args) {
@@ -23,6 +24,32 @@ public class App {
 
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
+    //login
+    post("/login", (request,response) ->{
+      Map<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      String password = request.queryParams("password");
+      if(name.equals(User.USER_NAME) && password.equals(User.USER_PASSWORD)) {
+        User user = new User(name,password, User.USER_TYPE[1]);
+        user.save();
+        request.session().attribute("user", user);
+        User logInUser=User.findLogin(password);
+
+        String url;
+
+          request.session().attribute("user",logInUser);
+           url = "/admin";
+
+        response.redirect(url);
+      }else {
+        String url;
+          JOptionPane.showMessageDialog(null, "Incorrect Username or Password!", "Try Again", JOptionPane.INFORMATION_MESSAGE);
+             url = "/login";
+             response.redirect(url);
+      }
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -48,9 +75,15 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("groups", Group.all());
       model.put("template", "templates/admin.vtl");
-
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+    //login
+    get("/login", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/signin.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
 
 //     get("/groups/new", (request, response) -> {
 //   Map<String, Object> model = new HashMap<String, Object>();
