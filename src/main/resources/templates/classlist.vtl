@@ -19,6 +19,7 @@
 	<tbody>
 
 		  #foreach($individual in $group.getIndividuals())
+			<tr>
 			<td>$individual.getId()</td>
 		   <td>$individual.getName()</td>
 			 <td>
@@ -30,6 +31,7 @@
 		</button>
 		  </form>
 		   </td>
+			 </tr>
 		  #end
 	</tbody>
 </table>

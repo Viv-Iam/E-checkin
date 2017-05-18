@@ -170,8 +170,10 @@ Individual individual = Individual.find(Integer.parseInt(request.params("id")));
 String name = request.queryParams("name");
 Group group = Group.find(individual.getGroupId());
 individual.update(name);
-String url = String.format("/groups/%d/individuals/%d", group.getId(), individual.getId());
+// String url = String.format("/groups/%d/individuals/%d", group.getId(), individual.getId());
+String url = "/groups/students/show/?groupId=" + request.params("group_id");
 response.redirect(url);
+// model.put("template", "templates/student-list.vtl");
 return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
