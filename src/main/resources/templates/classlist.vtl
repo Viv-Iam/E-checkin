@@ -19,18 +19,19 @@
 	<tbody>
 
 		  #foreach($individual in $group.getIndividuals())
+			<tr>
 			<td>$individual.getId()</td>
 		   <td>$individual.getName()</td>
 			 <td>
-		<form action="/groups/$group.getId()/students" method="post">
-		  <option value="$individual.getId()" type="hidden">
-		  </option>
+		<form action="/students/check-in" method="post">
+		  <input id="studentId" name="studentId" value="$individual.getId()" type="hidden">
 		<button type="submit" class="button btn btn-black">
 			<span class="checkin">Check In</span>
 			<span class="checkedin">Checked In</span>
 		</button>
 		  </form>
 		   </td>
+			 </tr>
 		  #end
 	</tbody>
 </table>

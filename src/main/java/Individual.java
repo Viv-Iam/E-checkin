@@ -83,4 +83,14 @@ public void delete() {
   }
 }
 
+public List<Sign> getSigns() {
+  String sql = "SELECT * FROM signs WHERE studentid = :id;";
+
+  try (Connection con = DB.sql2o.open()) {
+    return con.createQuery(sql)
+      .addParameter("id", id)
+      .executeAndFetch(Sign.class);
+  }
+}
+
 }

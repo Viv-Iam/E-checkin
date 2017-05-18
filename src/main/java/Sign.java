@@ -7,7 +7,7 @@ public  class Sign {
 	private int id;
 	private Timestamp timein;
 	private int studentId;
-//contructor
+//constructor
 	public Sign(int studentId) {
 		this.studentId = studentId;
 
