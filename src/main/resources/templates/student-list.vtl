@@ -11,37 +11,25 @@
   </thead>
   <tbody>
     #foreach ($individual in $group.getIndividuals())
-      <tr>
-        <td>
-          <a href="/student/$student.getId()">$individual.getName()</a>
-        </td>
-        <td>
-          <form action="/groups/$individual.getGroupId()/individuals/$individual.getId()" method="post">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text">
-            <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-          </form>
-        </td>
-        <td><form action="/groups/$individual.getGroupId()/individuals/$individual.getId()/delete" method="post">
+    <tr>
+      <td>
+        <a href="/student/$student.getId()">$individual.getName()</a>
+      </td>
+      <td>
+        <form action="/groups/$individual.getGroupId()/individuals/$individual.getId()" method="post">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text">
+          <button type="submit" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+        </form>
+      </td>
+      <td>
+        <form action="/groups/$individual.getGroupId()/individuals/$individual.getId()/delete" method="post">
           <button type="submit" class="btn btn-danger" id="delete-individual"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
         </form>
-        </td>
-      </tr>
+      </td>
+    </tr>
     #end
   </tbody>
 </table>
 
 <a href="/admin" class="btn btn-success">Go Back</a>
-
-
-<!-- <ul>
-##  #foreach($individual in $group.getIndividuals())
-   <li>$individual.getName()
-<form action="/groups/$group.getId()/students" method="post">
-  <option value="$individual.getId()" type="hidden"></option><button type="submit">Check-IN</button>
-  </form>
-   </li>
-##  #end
-</ul>
-
-<a href="/student-groups">All groups</a> -->

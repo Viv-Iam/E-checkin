@@ -187,6 +187,7 @@ get("/groups/:group_id/individuals/:id", (request, response) -> {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+
     get("/admin/class/register", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   // Individual individual = new Individual(:studentId);
@@ -196,6 +197,23 @@ get("/groups/:group_id/individuals/:id", (request, response) -> {
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
+//deleting groups
+post("/groups/:group_id/delete", (request, response) -> {
+  HashMap<String, Object> model = new HashMap<String, Object>();
+  Group group = Group.find(Integer.parseInt(request.params("group_id")));
+  group.delete();
+  model.put("group", group);
+  model.put("template", "templates/groups.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
+//all groups
+get("/groups", (request, response) -> {
+  HashMap<String, Object> model = new HashMap<String, Object>();
+
+  model.put("groups", Group.all());
+  model.put("template", "templates/groups.vtl");
+  return new ModelAndView(model, layout);
+}, new VelocityTemplateEngine());
 
 
     post("/groups/:group_id/individuals/:id", (request, response) -> {

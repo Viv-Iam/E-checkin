@@ -1,0 +1,28 @@
+<br><br><br>
+<h1>All Groups</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    #foreach ($group in $groups)
+    <tr>
+      <td>
+        $group.getName()
+      </td>
+
+      <td>
+        <form action="/groups/$group.getId()/delete" method="post">
+          <button type="submit" class="btn btn-danger" id="delete-group"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+        </form>
+      </td>
+    </tr>
+    #end
+  </tbody>
+</table>
+
+<a href="/admin" class="btn btn-success">Go Back</a>
