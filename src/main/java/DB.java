@@ -8,7 +8,6 @@ public class DB {
     public static Sql2o sql2o;
 
     // public static Sql2o sql2o = new Sql2o("jdbc:postgresql://ec2-54-225-236-102.compute-1.amazonaws.com:5432/dbne9tqrap2vcb", "yknwznxkklyvbw", "c9b27f56b200d08b52193e15a4344f6e08c508f65d3d21a5fc3011a6663d3f16");
-
     static {
 
         try {
