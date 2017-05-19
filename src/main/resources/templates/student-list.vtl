@@ -1,6 +1,8 @@
+<link rel="stylesheet" href="/student.css">
+<div class="main">
 <br><br><br>
 <h1>$group.getName() Students:</h1>
-
+<div class="myTable">
 <table class="table table-striped">
   <thead>
     <tr>
@@ -12,9 +14,7 @@
   <tbody>
     #foreach ($individual in $group.getIndividuals())
     <tr>
-      <td>
-        <a href="/student/$student.getId()">$individual.getName()</a>
-      </td>
+      <td>$individual.getName()</td>
       <td>
         <form action="/groups/$individual.getGroupId()/individuals/$individual.getId()" method="post">
           <label for="name">Name</label>
@@ -33,3 +33,5 @@
 </table>
 
 <a href="/admin" class="btn btn-success">Go Back</a>
+</div>
+</div>

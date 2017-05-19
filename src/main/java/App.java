@@ -187,7 +187,7 @@ get("/groups/:group_id/individuals/:id", (request, response) -> {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/admin/class/register", (request, response) -> {
+  get("/admin/class/register", (request, response) -> {
   Map<String, Object> model = new HashMap<String, Object>();
   // Individual individual = new Individual(:studentId);
   model.put("signs", Sign.all());
@@ -235,7 +235,7 @@ post("/groups/:group_id/individuals/:id/delete", (request, response) -> {
   Group group = Group.find(individual.getGroupId());
   individual.delete();
   model.put("group", group);
-  model.put("template", "templates/group.vtl");
+  model.put("template", "templates/student-list.vtl");
   return new ModelAndView(model, layout);
 }, new VelocityTemplateEngine());
 
