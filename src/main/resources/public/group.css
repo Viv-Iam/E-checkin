@@ -1,0 +1,33 @@
+body{
+  background: url(/images/overhead.jpg)  no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h1{
+  padding-top: 10px;
+  text-align: center;
+  color: white;
+}
+
+th{
+  padding-top: 10px;
+  text-align: center;
+}
+.main-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.myTable{
+  margin-left: 200px;
+  margin-right: 200px;
+  text-align: center;
+  background:rgba(255,255,255,0.7);
+}
